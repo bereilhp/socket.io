@@ -4,9 +4,28 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+const bodyParser = require('body-parser'); // middleware
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get('/chat', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/home.html');
+});
+
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/login.html');
+});
+
+app.post('/login', (req, res) => {
+  let username = req.body.username;
+  let password = req.body.password;
+  res.send(`
+  Username: ${username} \nPassword: ${password}
+  `);
 });
 
 io.on('connection', (socket) => {
