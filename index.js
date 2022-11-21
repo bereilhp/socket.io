@@ -23,9 +23,11 @@ app.get('/login', (req, res) => {
 app.post('/login', (req, res) => {
   let username = req.body.username;
   let password = req.body.password;
-  res.send(`
-  Username: ${username} \nPassword: ${password}
-  `);
+  /*res.send(`
+  Username: ${username} Password: ${password}
+  `);*/
+  console.log(`Username: ${username} Password: ${password}`)
+  res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', (socket) => {
