@@ -18,4 +18,4 @@ After all the dependencies have been installed, run the following command to sta
 npm start 
 ```
 
-Entrar en la página web http://localhost:3000 para usar la applicación
+Open the webpage http://localhost:3000 to use the web app.
